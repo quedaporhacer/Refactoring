@@ -30,11 +30,6 @@ Topic >> description: anObject [
 ]
 
 { #category : #initialize }
-Topic >> initialize [
-	questions := OrderedCollection new.
-]
-
-{ #category : #initialize }
 Topic >> initializeName: aName description: aDescription [
 	name := aName.
 	description := aDescription.
