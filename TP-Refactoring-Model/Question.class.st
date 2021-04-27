@@ -69,9 +69,9 @@ Question >> initializeWithTitle: aTitle description: aDescription user: aUser to
 	user:= aUser.
 	description := aDescription.
 	title:= aTitle.
-	topics add: aTopic.
 	answers := OrderedCollection new.
 	topics := OrderedCollection new.
+	topics add: aTopic.
 	votes := OrderedCollection new.
 	timestamp := DateAndTime now.
 ]
