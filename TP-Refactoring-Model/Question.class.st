@@ -46,14 +46,6 @@ Question >> description: anObject [
 ]
 
 { #category : #'initalize-release' }
-Question >> initialize [
-	answers := OrderedCollection new.
-	topics := OrderedCollection new.
-	votes := OrderedCollection new.
-	timestamp := DateAndTime now.
-]
-
-{ #category : #'initalize-release' }
 Question >> initializeWithTitle: aTitle description: aDescription user: aUser [
 	user:= aUser.
 	description := aDescription.
