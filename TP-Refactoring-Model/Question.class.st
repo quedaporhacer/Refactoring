@@ -15,21 +15,12 @@ Class {
 
 { #category : #'instance creation' }
 Question class >> newWithTitle: title description: aDescription user: aUser [
-	^ self new
-		title: title;
-		description: aDescription;
-		user: aUser;
-		yourself.
+	^ (self new) initializeWithTitle: title description: aDescription   user: aUser; yourself. 
 ]
 
 { #category : #'instance creation' }
 Question class >> newWithTitle: title description: aDescription user: aUser topic: aTopic [
-	^ self new
-		title: title;
-		description: aDescription;
-		addTopic: aTopic;
-		user: aUser;
-		yourself.
+	^ (self new) initializeWithTitle: title description: aDescription   user: aUser topic: aTopic ; yourself. 
 ]
 
 { #category : #adding }
@@ -55,14 +46,6 @@ Question >> description: anObject [
 ]
 
 { #category : #'initalize-release' }
-Question >> initialize [
-	answers := OrderedCollection new.
-	topics := OrderedCollection new.
-	votes := OrderedCollection new.
-	timestamp := DateAndTime now.
-]
-
-{ #category : #'initalize-release' }
 Question >> initializeWithTitle: aTitle description: aDescription user: aUser [
 	user:= aUser.
 	description := aDescription.
@@ -78,9 +61,9 @@ Question >> initializeWithTitle: aTitle description: aDescription user: aUser to
 	user:= aUser.
 	description := aDescription.
 	title:= aTitle.
-	topics add: aTopic.
 	answers := OrderedCollection new.
 	topics := OrderedCollection new.
+	topics add: aTopic.
 	votes := OrderedCollection new.
 	timestamp := DateAndTime now.
 ]
