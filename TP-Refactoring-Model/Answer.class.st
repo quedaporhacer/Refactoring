@@ -41,6 +41,15 @@ Answer >> initialize [
 	timestamp := DateAndTime now.
 ]
 
+{ #category : #initialization }
+Answer >> initialize: anAnswer user: aUser question: aQuestion [
+	votes := OrderedCollection new.
+	timestamp := DateAndTime now.
+	description:= anAnswer.
+	user:= aUser.
+	question:= aQuestion.
+]
+
 { #category : #accessing }
 Answer >> isTopAnswer [
 	.
