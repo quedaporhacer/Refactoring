@@ -73,6 +73,18 @@ Question >> initializeWithTitle: aTitle description: aDescription user: aUser [
 	timestamp := DateAndTime now.
 ]
 
+{ #category : #'initalize-release' }
+Question >> initializeWithTitle: aTitle description: aDescription user: aUser topic:aTopic [
+	user:= aUser.
+	description := aDescription.
+	title:= aTitle.
+	topics add: aTopic.
+	answers := OrderedCollection new.
+	topics := OrderedCollection new.
+	votes := OrderedCollection new.
+	timestamp := DateAndTime now.
+]
+
 { #category : #'as yet unclassified' }
 Question >> negativeVotes [
 	| r |
