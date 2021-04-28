@@ -17,9 +17,7 @@ Class {
 { #category : #'instance-creation' }
 User class >> username: aUsername password: aPassword questionRetriever: aQuestionRetriever [
 	^ self new
-		username: aUsername;
-		password: aPassword;
-		questionRetriever: aQuestionRetriever;
+		initializeWithUsername: aUsername password: aPassword questionRetriever: aQuestionRetriever;
 		yourself
 ]
 
@@ -60,14 +58,16 @@ User >> following [
 	^ following
 ]
 
-{ #category : #initialize }
-User >> initialize [
-
-	questions := OrderedCollection new.  
-	answers := OrderedCollection new. 
-	topics := OrderedCollection new. 
-	following := OrderedCollection new. 
-	votes := OrderedCollection new.
+{ #category : #initialization }
+User >> initializeWithUsername: aUsername password: aPassword questionRetriever: aQuestionRetriever [
+	username := aUsername.
+	password := aPassword.
+	questionRetriever := aQuestionRetriever.
+	questions := OrderedCollection new.
+	answers := OrderedCollection new.
+	topics := OrderedCollection new.
+	following := OrderedCollection new.
+	votes := OrderedCollection new
 ]
 
 { #category : #accessing }
