@@ -35,7 +35,7 @@ QuestionRetriever >> option: anOption [
 
 { #category : #retrieving }
 QuestionRetriever >> retrieveQuestions: aUser [
-	| qRet temp followingCol topicsCol newsCol popularTCol averageVotes|
+	| qRet temp followingCol newsCol popularTCol averageVotes|
 	qRet := OrderedCollection new.
 	option = #social ifTrue:[
 			followingCol := OrderedCollection new.
