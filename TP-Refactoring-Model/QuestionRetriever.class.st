@@ -43,12 +43,18 @@ QuestionRetriever >> retrieveQuestions: aUser [
 			temp := followingCol asSortedCollection:[ :a :b | a positiveVotes size > b positiveVotes size ].
 			qRet := temp last: (100 min: temp size).
 		].
-
-	option = #topics ifTrue:[
-			topicsCol := OrderedCollection new.
-			aUser topics do:[ :topic | topicsCol addAll: topic questions ].
-			temp := topicsCol asSortedCollection:[ :a :b | a positiveVotes size > b positiveVotes size ].
-			qRet := temp last: (100 min: temp size).
+	
+	option = #topics ifTrue:[			
+			qRet := ((aUser topics
+                flatCollect: [ :topic| topic questions ])
+                asSortedCollection: [ :a :b | a positiveVotes size > b positiveVotes size ])
+                last:
+                    (100
+                        min:
+                            ((aUser topics flatCollect: [ :topic | topic questions ])
+                                asSortedCollection: [ :a :b | a positiveVotes size > b positiveVotes size ])
+                                size)
+			
 		].
 	
 	option = #news ifTrue:[
