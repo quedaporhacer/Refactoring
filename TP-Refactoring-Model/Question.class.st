@@ -64,6 +64,7 @@ Question >> initializeWithTitle: aTitle description: aDescription user: aUser to
 	answers := OrderedCollection new.
 	topics := OrderedCollection new.
 	topics add: aTopic.
+	aTopic addQuestion: self.
 	votes := OrderedCollection new.
 	timestamp := DateAndTime now.
 ]
