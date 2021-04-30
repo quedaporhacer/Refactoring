@@ -50,8 +50,8 @@ Answer >> initialize: anAnswer user: aUser question: aQuestion [
 
 { #category : #accessing }
 Answer >> isTopAnswer [
-	.
-	^ self positiveVotes >=  ((question sum: [:answer | answer positiveVotes size ]) / question answer size )
+	"envidia de atributos, no anda el metodo"
+	^ self positiveVotes >=  ((question sum: [:answer | answer positiveVotes size ]) / question answers size )
 ]
 
 { #category : #'as yet unclassified' }

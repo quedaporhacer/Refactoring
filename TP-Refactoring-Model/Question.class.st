@@ -36,6 +36,12 @@ Question >> addVote: aVote [
 ]
 
 { #category : #accessing }
+Question >> answers [
+"este metodo no venia en el .st"
+	^answers 
+]
+
+{ #category : #accessing }
 Question >> description [
 	^ description
 ]
