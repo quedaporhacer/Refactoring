@@ -53,6 +53,11 @@ User >> follow: aUser [
 	following add: aUser 
 ]
 
+{ #category : #'as yet unclassified' }
+User >> followedQuestions [
+	^(following flatCollect: [ :follow | follow questions ])
+]
+
 { #category : #accessing }
 User >> following [
 	^ following
@@ -107,6 +112,13 @@ User >> questions [
 { #category : #accessing }
 User >> questionsOfInterest [
 	^ questionRetriever retrieveQuestions: self.
+]
+
+{ #category : #'as yet unclassified' }
+User >> social [
+	^ (self followedQuestions
+		asSortedCollection: [ :a :c | a positiveVotes size > c positiveVotes size ])
+		last: (100 min: self followedQuestions size)
 ]
 
 { #category : #accessing }
