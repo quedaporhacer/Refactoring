@@ -75,12 +75,22 @@ Question >> initializeWithTitle: aTitle description: aDescription user: aUser to
 	timestamp := DateAndTime now.
 ]
 
+{ #category : #testing }
+Question >> isFromToday [
+	^ timestamp asDate = Date today 
+]
+
 { #category : #'as yet unclassified' }
 Question >> negativeVotes [
 	| r |
 	r := OrderedCollection new.
 	votes do:[:vote | vote isLike ifFalse:[r add: vote]].
 	^r
+]
+
+{ #category : #'as yet unclassified' }
+Question >> numberPositiveVotes [
+	^self positiveVotes size
 ]
 
 { #category : #'as yet unclassified' }
