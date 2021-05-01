@@ -45,14 +45,16 @@ CuOOra >> initialize [
 ]
 
 { #category : #'as yet unclassified' }
+CuOOra >> news [
+	^self questionsFromToday last: (100 min: self questionsFromToday size)
+]
+
+{ #category : #'as yet unclassified' }
 CuOOra >> popularToday [
-	^((self questionsFromToday
-		select: [ :q | q numberPositiveVotes >= self averageVotes ])
-		asSortedCollection: [ :a :b | a numberPositiveVotes > b numberPositiveVotes ])
-		last:(100 min:
-					(self questionsFromToday
-						select: [ :q | q numberPositiveVotes >= self averageVotes ])
-						size)
+	^ ((self questionsFromToday select: [ :q | q numberPositiveVotes >= self averageVotes ]))
+		last:
+			(100 min:
+					(self questionsFromToday	select: [ :q | q numberPositiveVotes >= self averageVotes ])size)
 ]
 
 { #category : #accessing }
@@ -62,7 +64,10 @@ CuOOra >> questions [
 
 { #category : #accessing }
 CuOOra >> questionsFromToday [
-	^questions select: [ :q |  q isFromToday ].
+	"Colecion ordenada por votos de las preguntas de hoy"
+
+	^ (questions select: [ :q | q isFromToday ])
+		asSortedCollection: [ :a :b | a numberPositiveVotes > b numberPositiveVotes ]
 ]
 
 { #category : #accessing }
