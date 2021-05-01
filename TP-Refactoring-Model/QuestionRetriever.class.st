@@ -35,44 +35,15 @@ QuestionRetriever >> option: anOption [
 
 { #category : #retrieving }
 QuestionRetriever >> retrieveQuestions: aUser [
-	| qRet temp popularTCol averageVotes |
+	| qRet |
 	qRet := OrderedCollection new.
 	option = #social
-		ifTrue: [ qRet := ((aUser following
-				flatCollect: [ :follow | follow questions ])
-				asSortedCollection: [ :a :c | a positiveVotes size > c positiveVotes size ])
-				last:
-					(100
-						min:
-							((aUser following flatCollect: [ :follow | follow questions ])
-								asSortedCollection: [ :a :b | a positiveVotes size > b positiveVotes size ])
-								size) ].
+		ifTrue: [ qRet := aUser social ].
 	option = #topics
-		ifTrue: [ qRet := ((aUser topics flatCollect: [ :follow | follow questions ])
-				asSortedCollection: [ :a :c | a positiveVotes size > c positiveVotes size ])
-				last:
-					(100
-						min:
-							((aUser topics flatCollect: [ :follow | follow questions ])
-								asSortedCollection: [ :a :b | a positiveVotes size > b positiveVotes size ])
-								size) ].
+		ifTrue: [ qRet := aUser topicsRetriver  ].
 	option = #news
-		ifTrue: [ qRet := ((cuoora questions
-				select: [ :q | q timestamp asDate = Date today ])
-				asSortedCollection: [ :a :b | a positiveVotes size > b positiveVotes size ])
-				last:
-					(100
-						min:
-							((cuoora questions select: [ :q | q timestamp asDate = Date today ])
-								asSortedCollection: [ :a :b | a positiveVotes size > b positiveVotes size ])
-								size) ].
-							
-							
-							
+		ifTrue: [ qRet := cuoora news ].
 	option = #popularToday
-		ifTrue: [ 
-			qRet := cuoora popularToday .
-			].
-		
+		ifTrue: [ qRet := cuoora popularToday ].
 	^ qRet reject: [ :q | q user = aUser ]
 ]
