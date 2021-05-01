@@ -121,9 +121,21 @@ User >> social [
 		last: (100 min: self followedQuestions size)
 ]
 
+{ #category : #'as yet unclassified' }
+User >> topicQuestions [
+	^ topics flatCollect: [ :topic | topic questions ]
+]
+
 { #category : #accessing }
 User >> topics [
 	^ topics
+]
+
+{ #category : #'as yet unclassified' }
+User >> topicsRetriver [
+		^ (self topicQuestions
+		asSortedCollection: [ :a :c | a positiveVotes size > c positiveVotes size ])
+		last: (100 min: self topicQuestions size)
 ]
 
 { #category : #accessing }
