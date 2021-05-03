@@ -12,10 +12,10 @@ Class {
 }
 
 { #category : #'instance creation' }
-Answer class >> new: anAnswer user: aUser question: aQuestion [
+Answer class >> new: aDescription  user: aUser question: aQuestion [
 	^ self new
-		initialize: anAnswer user: aUser question: aQuestion;
-		yourself.
+		initializeWithDescription: aDescription user: aUser question: aQuestion;
+		yourself
 ]
 
 { #category : #adding }
@@ -40,12 +40,12 @@ Answer >> initialize [
 ]
 
 { #category : #initialization }
-Answer >> initialize: anAnswer user: aUser question: aQuestion [
+Answer >> initializeWithDescription: aDescription user: aUser question: aQuestion [
 	votes := OrderedCollection new.
 	timestamp := DateAndTime now.
-	description:= anAnswer.
-	user:= aUser.
-	question:= aQuestion.
+	description := aDescription.
+	user := aUser.
+	question := aQuestion
 ]
 
 { #category : #accessing }
@@ -56,18 +56,12 @@ Answer >> isTopAnswer [
 
 { #category : #'as yet unclassified' }
 Answer >> negativeVotes [
-	| r |
-	r := OrderedCollection new.
-	votes do:[:vote | vote isLike ifFalse:[r add: vote]].
-	^r
+	^votes	reject: [ :vote | vote isLike ].
 ]
 
 { #category : #'as yet unclassified' }
 Answer >> positiveVotes [
-	| r |
-	r := OrderedCollection new.
-	votes do:[:vote | vote isLike ifTrue:[r add: vote]].
-	^r
+		^ votes select: [ :vote | vote isLike ]
 ]
 
 { #category : #private }
