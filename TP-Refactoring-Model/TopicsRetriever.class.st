@@ -6,5 +6,5 @@ Class {
 
 { #category : #retrieving }
 TopicsRetriever >> retrieveQuestions: aUser [
-	^ aUser topicsRetriver reject: [ :q | q user = aUser  ]
+	^ self rejectWithUser: aUser aQuestions: aUser topicsRetriver 
 ]

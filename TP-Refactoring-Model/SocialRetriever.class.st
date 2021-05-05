@@ -6,5 +6,5 @@ Class {
 
 { #category : #retrieving }
 SocialRetriever >> retrieveQuestions: aUser [
-	^ aUser social reject: [ :q | q user = aUser  ]
+	^ self rejectWithUser: aUser aQuestions: aUser social 
 ]

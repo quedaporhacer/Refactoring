@@ -34,7 +34,8 @@ CuOOra >> addUser: aUser [
 
 { #category : #'as yet unclassified' }
 CuOOra >> averageVotes [
-	 ^(questions sum: [ :q | q positiveVotes size ]) / self questionsFromToday size. 
+	^ (self questionsFromToday  sum: [ :q | q positiveVotes size ])
+		/ self questionsFromToday size
 ]
 
 { #category : #initialize }

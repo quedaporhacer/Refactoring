@@ -6,5 +6,5 @@ Class {
 
 { #category : #retrieving }
 PopularTodayRetriever >> retrieveQuestions: aUser [
-	^ cuoora popularToday reject: [ :q | q user = aUser  ]
+	^ self rejectWithUser: aUser aQuestions: cuoora popularToday 
 ]

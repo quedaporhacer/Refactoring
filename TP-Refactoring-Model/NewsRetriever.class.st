@@ -6,5 +6,5 @@ Class {
 
 { #category : #retrieving }
 NewsRetriever >> retrieveQuestions: aUser [
-	^ cuoora news reject: [ :q | q user = aUser  ]
+	^ self rejectWithUser: aUser aQuestions: (cuoora news) 
 ]

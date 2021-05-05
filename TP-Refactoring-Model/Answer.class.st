@@ -51,7 +51,11 @@ Answer >> initializeWithDescription: aDescription user: aUser question: aQuestio
 { #category : #accessing }
 Answer >> isTopAnswer [
 	"envidia de atributos, no anda el metodo"
-	^ self positiveVotes >=  ((question sum: [:answer | answer positiveVotes size ]) / question answers size )
+
+	^ self positiveVotes
+		>=
+			((question sum: [ :answer | answer numberPositiveVotes  ])
+				/ question answers size)
 ]
 
 { #category : #'as yet unclassified' }
