@@ -1,26 +1,8 @@
 Class {
 	#name : #QuestionRetriever,
 	#superclass : #Object,
-	#instVars : [
-		'cuoora'
-	],
 	#category : #'TP-Refactoring-Model'
 }
-
-{ #category : #'instance creation' }
-QuestionRetriever class >> new: cuoora [
-	^ self new initializeWith: cuoora
-]
-
-{ #category : #'instance creation' }
-QuestionRetriever class >> new: cuoora and: aSymbol [
-	^ self new cuoora: cuoora; option:aSymbol; yourself.
-]
-
-{ #category : #initialization }
-QuestionRetriever >> initializeWith: aCuooraInstance [
-	cuoora := aCuooraInstance
-]
 
 { #category : #accessing }
 QuestionRetriever >> lastHundred: aQuestions [
