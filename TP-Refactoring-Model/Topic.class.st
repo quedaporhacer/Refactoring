@@ -24,11 +24,6 @@ Topic >> description [
 	^ description
 ]
 
-{ #category : #accessing }
-Topic >> description: anObject [
-	description := anObject
-]
-
 { #category : #initialize }
 Topic >> initializeName: aName description: aDescription [
 	name := aName.
@@ -40,11 +35,6 @@ Topic >> initializeName: aName description: aDescription [
 { #category : #accessing }
 Topic >> name [
 	^name
-]
-
-{ #category : #accessing }
-Topic >> name: anObject [
-	name := anObject
 ]
 
 { #category : #accessing }

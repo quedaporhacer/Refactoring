@@ -89,11 +89,6 @@ User >> password [
 	^ password
 ]
 
-{ #category : #private }
-User >> password: anObject [
-	password := anObject
-]
-
 { #category : #accessing }
 User >> questionRetriever [
 	^ questionRetriever
@@ -141,11 +136,6 @@ User >> topicsRetriver [
 { #category : #accessing }
 User >> username [
 	^ username
-]
-
-{ #category : #private }
-User >> username: anObject [
-	username := anObject
 ]
 
 { #category : #accessing }

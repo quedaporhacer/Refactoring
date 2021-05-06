@@ -1,6 +1,6 @@
 Class {
 	#name : #Question,
-	#superclass : #Answer,
+	#superclass : #Post,
 	#instVars : [
 		'title',
 		'answers',
@@ -34,26 +34,19 @@ Question >> answers [
 
 { #category : #'initalize-release' }
 Question >> initializeWithTitle: aTitle description: aDescription user: aUser [
-	user:= aUser.
-	description := aDescription.
-	title:= aTitle.
+	self initializeWithDescription: aDescription user: aUser.
+	title := aTitle.
 	answers := OrderedCollection new.
 	topics := OrderedCollection new.
-	votes := OrderedCollection new.
-	timestamp := DateAndTime now.
+	
 ]
 
 { #category : #'initalize-release' }
-Question >> initializeWithTitle: aTitle description: aDescription user: aUser topic:aTopic [
-	user:= aUser.
-	description := aDescription.
-	title:= aTitle.
-	answers := OrderedCollection new.
-	topics := OrderedCollection new.
+Question >> initializeWithTitle: aTitle description: aDescription user: aUser topic: aTopic [
+	self initializeWithTitle: aTitle description: aDescription user: aUser.
 	topics add: aTopic.
 	aTopic addQuestion: self.
-	votes := OrderedCollection new.
-	timestamp := DateAndTime now.
+	
 ]
 
 { #category : #testing }
@@ -69,11 +62,6 @@ Question >> numberPositiveVotes [
 { #category : #accessing }
 Question >> title [
 	^title 
-]
-
-{ #category : #accessing }
-Question >> title: aTitle [
-	title := aTitle 
 ]
 
 { #category : #accessing }
