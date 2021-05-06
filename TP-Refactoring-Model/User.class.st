@@ -17,8 +17,9 @@ Class {
 { #category : #'instance-creation' }
 User class >> username: aUsername password: aPassword questionRetriever: aQuestionRetriever [
 	^ self new
-		initializeWithUsername: aUsername password: aPassword questionRetriever: aQuestionRetriever;
-		yourself
+		initializeWithUsername: aUsername
+		password: aPassword
+		questionRetriever: aQuestionRetriever yourself; yourself 
 ]
 
 { #category : #accessing }
@@ -53,23 +54,9 @@ User >> follow: aUser [
 	following add: aUser 
 ]
 
-{ #category : #'as yet unclassified' }
-User >> followedQuestions [
-	^(following flatCollect: [ :follow | follow questions ])
-]
-
 { #category : #accessing }
 User >> following [
 	^ following
-]
-
-{ #category : #initialization }
-User >> initialize [
-	questions := OrderedCollection new.
-	answers := OrderedCollection new.
-	topics := OrderedCollection new.
-	following := OrderedCollection new.
-	votes := OrderedCollection new
 ]
 
 { #category : #initialization }
@@ -111,14 +98,7 @@ User >> questionsOfInterest [
 
 { #category : #'as yet unclassified' }
 User >> social [
-	^ (self followedQuestions
-		asSortedCollection: [ :a :c | a positiveVotes size > c positiveVotes size ])
-		last: (100 min: self followedQuestions size)
-]
-
-{ #category : #'as yet unclassified' }
-User >> topicQuestions [
-	^ topics flatCollect: [ :topic | topic questions ]
+	^(following flatCollect: [ :follow | follow questions ])
 ]
 
 { #category : #accessing }
@@ -128,9 +108,7 @@ User >> topics [
 
 { #category : #'as yet unclassified' }
 User >> topicsRetriver [
-		^ (self topicQuestions
-		asSortedCollection: [ :a :c | a positiveVotes size > c positiveVotes size ])
-		last: (100 min: self topicQuestions size)
+	^ topics flatCollect: [ :topic | topic questions ]
 ]
 
 { #category : #accessing }

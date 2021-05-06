@@ -6,5 +6,7 @@ Class {
 
 { #category : #retrieving }
 PopularTodayRetriever >> retrieveQuestions: aUser [
-	^ self rejectWithUser: aUser aQuestions: cuoora popularToday 
+		^ self
+		rejectWithUser: aUser
+		aQuestions: (self lastHundred: (self orderedByPositiveVotes: cuoora popularToday ))
 ]

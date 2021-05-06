@@ -34,8 +34,7 @@ CuOOra >> addUser: aUser [
 
 { #category : #'as yet unclassified' }
 CuOOra >> averageVotes [
-	^ (self questionsFromToday  sum: [ :q | q positiveVotes size ])
-		/ self questionsFromToday size
+	^ (self news sum: [ :q | q numberPositiveVotes ]) / self totalNewForToday
 ]
 
 { #category : #initialize }
@@ -45,17 +44,17 @@ CuOOra >> initialize [
 	questions := OrderedCollection new
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 CuOOra >> news [
-	^self questionsFromToday last: (100 min: self questionsFromToday size)
+	^ (questions select: [ :q | q isFromToday ])
+	
 ]
 
 { #category : #'as yet unclassified' }
 CuOOra >> popularToday [
-	^ ((self questionsFromToday select: [ :q | q numberPositiveVotes >= self averageVotes ]))
-		last:
-			(100 min:
-					(self questionsFromToday	select: [ :q | q numberPositiveVotes >= self averageVotes ])size)
+	^ (self news
+		select: [ :q | q numberPositiveVotes >= self averageVotes ])
+		
 ]
 
 { #category : #accessing }
@@ -64,16 +63,13 @@ CuOOra >> questions [
 ]
 
 { #category : #accessing }
-CuOOra >> questionsFromToday [
-	"Colecion ordenada por votos de las preguntas de hoy"
-
-	^ (questions select: [ :q | q isFromToday ])
-		asSortedCollection: [ :a :b | a numberPositiveVotes > b numberPositiveVotes ]
+CuOOra >> topics [
+	^ topics
 ]
 
 { #category : #accessing }
-CuOOra >> topics [
-	^ topics
+CuOOra >> totalNewForToday [
+	^ self news size
 ]
 
 { #category : #accessing }

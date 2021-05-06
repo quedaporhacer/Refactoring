@@ -6,5 +6,7 @@ Class {
 
 { #category : #retrieving }
 TopicsRetriever >> retrieveQuestions: aUser [
-	^ self rejectWithUser: aUser aQuestions: aUser topicsRetriver 
+		^ self
+		rejectWithUser: aUser
+		aQuestions: (self lastHundred: (self orderedByPositiveVotes: aUser topicsRetriver ))
 ]

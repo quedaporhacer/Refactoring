@@ -6,5 +6,9 @@ Class {
 
 { #category : #retrieving }
 NewsRetriever >> retrieveQuestions: aUser [
-	^ self rejectWithUser: aUser aQuestions: (cuoora news) 
+	^ 
+			(self
+				rejectWithUser: aUser
+				aQuestions: (self
+		lastHundred: (self orderedByPositiveVotes: cuoora news)))
 ]

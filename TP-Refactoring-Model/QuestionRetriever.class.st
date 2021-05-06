@@ -17,14 +17,20 @@ QuestionRetriever class >> new: cuoora and: aSymbol [
 	^ self new cuoora: cuoora; option:aSymbol; yourself.
 ]
 
-{ #category : #accesing }
-QuestionRetriever >> cuoora: aCuooraInstance [
-	cuoora := aCuooraInstance 
-]
-
 { #category : #initialization }
 QuestionRetriever >> initializeWith: aCuooraInstance [
 	cuoora := aCuooraInstance
+]
+
+{ #category : #accessing }
+QuestionRetriever >> lastHundred: aQuestions [
+	^aQuestions last: (100 min: aQuestions size).
+]
+
+{ #category : #'as yet unclassified' }
+QuestionRetriever >> orderedByPositiveVotes: aQuestions [
+	^ aQuestions
+		asSortedCollection: [ :a :c | a numberPositiveVotes  > c numberPositiveVotes ]
 ]
 
 { #category : #'as yet unclassified' }

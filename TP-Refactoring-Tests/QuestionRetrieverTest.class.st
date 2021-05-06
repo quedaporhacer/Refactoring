@@ -102,9 +102,9 @@ QuestionRetrieverTest >> popularTodayTwoLikesFourQuestionsAtLeastOneVote [
 
 { #category : #'set up' }
 QuestionRetrieverTest >> setUp [
-	user1 := User new.
-	user2 := User new.
-	user3 := User new.
+	user1 := User username: '' password: '' questionRetriever: nil.
+	user2 := User username: '' password: '' questionRetriever: nil.
+	user3 := User username: '' password: '' questionRetriever: nil.
 	user1
 		follow: user2;
 		follow: user3.
@@ -134,10 +134,10 @@ QuestionRetrieverTest >> setUp [
 		topic: topicOO2.
 	cuoora addQuestion: questionUser1TopicOO1 forUser: user1.
 	cuoora addQuestion: questionUser3TopicOO2 forUser: user3.
-	socialRetriever := SocialRetriever new: cuoora."socialRetriever := QuestionRetriever new: cuoora and: #social."
-	topicsRetriever:=  TopicsRetriever new: cuoora. "topicsRetriever := QuestionRetriever new: cuoora and: #topics."
-	newsRetriever:= NewsRetriever new: cuoora. "newsRetriever := QuestionRetriever new: cuoora and: #news."
-	popularTodayRetriever:= PopularTodayRetriever new: cuoora ."popularTodayRetriever := QuestionRetriever new: cuoora	and: #popularToday"
+	socialRetriever := SocialRetriever new: cuoora.	"socialRetriever := QuestionRetriever new: cuoora and: #social."
+	topicsRetriever := TopicsRetriever new: cuoora.	"topicsRetriever := QuestionRetriever new: cuoora and: #topics."
+	newsRetriever := NewsRetriever new: cuoora.	"newsRetriever := QuestionRetriever new: cuoora and: #news."
+	popularTodayRetriever := PopularTodayRetriever new: cuoora	"popularTodayRetriever := QuestionRetriever new: cuoora	and: #popularToday"
 ]
 
 { #category : #testing }
