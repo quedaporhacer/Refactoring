@@ -5,8 +5,6 @@ Class {
 }
 
 { #category : #retrieving }
-SocialRetriever >> retrieveQuestions: aUser [
-		^ self
-		rejectWithUser: aUser
-		aQuestions: (self lastHundred: (self orderedByPositiveVotes: aUser social))
+SocialRetriever >> retrieve: aUse [
+	^aUse social
 ]

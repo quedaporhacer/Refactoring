@@ -4,9 +4,7 @@ Class {
 	#category : #'TP-Refactoring-Model'
 }
 
-{ #category : #retrieving }
-TopicsRetriever >> retrieveQuestions: aUser [
-		^ self
-		rejectWithUser: aUser
-		aQuestions: (self lastHundred: (self orderedByPositiveVotes: aUser topicsRetriver ))
+{ #category : #'as yet unclassified' }
+TopicsRetriever >> retrieve: aUser [
+	^aUser topicsRetriver  
 ]

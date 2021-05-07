@@ -1,8 +1,16 @@
 Class {
 	#name : #QuestionRetriever,
 	#superclass : #Object,
+	#instVars : [
+		'cuoora'
+	],
 	#category : #'TP-Refactoring-Model'
 }
+
+{ #category : #initialization }
+QuestionRetriever >> initializeWith: aCuooraInstance [
+	cuoora := aCuooraInstance
+]
 
 { #category : #accessing }
 QuestionRetriever >> lastHundred: aQuestions [
@@ -20,7 +28,14 @@ QuestionRetriever >> rejectWithUser: anUser aQuestions: aQuestions [
 	^ aQuestions reject: [ :q | q user = anUser ]
 ]
 
+{ #category : #'as yet unclassified' }
+QuestionRetriever >> retrieve: aUser [
+	self subclassResponsibility 
+]
+
 { #category : #retrieving }
 QuestionRetriever >> retrieveQuestions: aUser [
-	self subclassResponsibility 
+	^ self
+		rejectWithUser: aUser
+		aQuestions: (self lastHundred: (self orderedByPositiveVotes:  (self retrieve: aUser) ))
 ]

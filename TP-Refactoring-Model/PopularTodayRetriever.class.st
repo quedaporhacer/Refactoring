@@ -1,9 +1,6 @@
 Class {
 	#name : #PopularTodayRetriever,
 	#superclass : #QuestionRetriever,
-	#instVars : [
-		'cuoora'
-	],
 	#category : #'TP-Refactoring-Model'
 }
 
@@ -12,14 +9,7 @@ PopularTodayRetriever class >> new: cuoora [
 	^ self new initializeWith: cuoora
 ]
 
-{ #category : #initialization }
-PopularTodayRetriever >> initializeWith: aCuooraInstance [
-	cuoora := aCuooraInstance
-]
-
-{ #category : #retrieving }
-PopularTodayRetriever >> retrieveQuestions: aUser [
-		^ self
-		rejectWithUser: aUser
-		aQuestions: (self lastHundred: (self orderedByPositiveVotes: cuoora popularToday ))
+{ #category : #'as yet unclassified' }
+PopularTodayRetriever >> retrieve: aUser [
+	^cuoora popularToday 
 ]

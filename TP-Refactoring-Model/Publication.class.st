@@ -1,5 +1,5 @@
 Class {
-	#name : #Post,
+	#name : #Publication,
 	#superclass : #Object,
 	#instVars : [
 		'timestamp',
@@ -11,7 +11,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-Post class >> new: aDescription user: aUser [ 
+Publication class >> new: aDescription user: aUser [ 
 	^ self new
 		initializeWithDescription: aDescription
 			user: aUser;
@@ -19,17 +19,17 @@ Post class >> new: aDescription user: aUser [
 ]
 
 { #category : #adding }
-Post >> addVote: aVote [
+Publication >> addVote: aVote [
 	votes add: aVote
 ]
 
 { #category : #accessing }
-Post >> description [
+Publication >> description [
 	^ description
 ]
 
 { #category : #initialization }
-Post >> initializeWithDescription: aDescription user: aUser [
+Publication >> initializeWithDescription: aDescription user: aUser [
 	votes := OrderedCollection new.
 	timestamp := DateAndTime now.
 	description := aDescription.
@@ -37,26 +37,26 @@ Post >> initializeWithDescription: aDescription user: aUser [
 ]
 
 { #category : #'as yet unclassified' }
-Post >> negativeVotes [
+Publication >> negativeVotes [
 	^votes	reject: [ :vote | vote isLike ].
 ]
 
 { #category : #'as yet unclassified' }
-Post >> positiveVotes [
+Publication >> positiveVotes [
 		^ votes select: [ :vote | vote isLike ]
 ]
 
 { #category : #accessing }
-Post >> timestamp [
+Publication >> timestamp [
 	^ timestamp
 ]
 
 { #category : #accessing }
-Post >> user [
+Publication >> user [
 	^ user
 ]
 
 { #category : #accessing }
-Post >> votes [
+Publication >> votes [
 	^ votes
 ]
