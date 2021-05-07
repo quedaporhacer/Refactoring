@@ -7,6 +7,11 @@ Class {
 	#category : #'TP-Refactoring-Model'
 }
 
+{ #category : #'instance creation' }
+QuestionRetriever class >> new: cuoora [
+	^ self new initializeWith: cuoora
+]
+
 { #category : #initialization }
 QuestionRetriever >> initializeWith: aCuooraInstance [
 	cuoora := aCuooraInstance

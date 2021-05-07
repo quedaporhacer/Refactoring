@@ -134,8 +134,8 @@ QuestionRetrieverTest >> setUp [
 		topic: topicOO2.
 	cuoora addQuestion: questionUser1TopicOO1 forUser: user1.
 	cuoora addQuestion: questionUser3TopicOO2 forUser: user3.
-	socialRetriever := SocialRetriever new.	"socialRetriever := QuestionRetriever new: cuoora and: #social."
-	topicsRetriever := TopicsRetriever new.	"topicsRetriever := QuestionRetriever new: cuoora and: #topics."
+	socialRetriever := SocialRetriever new: cuoora.	"socialRetriever := QuestionRetriever new: cuoora and: #social."
+	topicsRetriever := TopicsRetriever new: cuoora.	"topicsRetriever := QuestionRetriever new: cuoora and: #topics."
 	newsRetriever := NewsRetriever new: cuoora.	"newsRetriever := QuestionRetriever new: cuoora and: #news."
 	popularTodayRetriever := PopularTodayRetriever new: cuoora	"popularTodayRetriever := QuestionRetriever new: cuoora	and: #popularToday"
 ]
